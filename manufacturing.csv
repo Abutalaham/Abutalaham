@@ -1,0 +1,6 @@
+mpg,cylinder,displacement,HP,weight,acceleration,model year,carname
+18,4,300,150,3504,12,70,honda
+15,8,325,165,3695,11.5,71,nexon
+18,8,318,160,3440,11,70,ford
+16,6,305,160,3450,12,15,indica
+17,8,307,150,3449,10.5,80,swift
