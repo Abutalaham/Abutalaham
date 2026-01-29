@@ -1,217 +1,183 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define the StudentInfo structure
-typedef struct {
-   char usn[15];
-   char name[50];
-   char programme[50];
-   int sem;
-   char phno[15];
-} StudentInfo;
+/* Student Structure */
+struct student
+{
+    char usn[15];
+    char name[50];
+    char programme[50];
+    int sem;
+    char phno[15];
 
-// Define the Student node structure
-typedef struct StudentNode{
-   StudentInfo data;
-   struct StudentNode *next;
-} StudentNode;
+    struct student *next;
+};
 
+struct student *head = NULL;
 
-// Define the StudentPointer alias
-typedef struct StudentNode *StudentPointer;
+/* Create New Node */
+struct student* createNode()
+{
+    struct student *newNode;
 
-StudentPointer first;
+    newNode = (struct student*)malloc(sizeof(struct student));
 
-void showMenu() {
-   printf("\n****** Menu ******\n");  
-   printf("\n1. Insert N Studs at Front\n");
-   printf("2. Insert at Front\n");
-   printf("3. Insert at End\n");
-   printf("4. Delete from Front\n");
-   printf("5. Delete from End\n");
-   printf("6. Display\n");
-   
-   printf("7. Exit\n");
-   printf("\nEnter your choice: ");
+    printf("Enter USN: ");
+    scanf("%s", newNode->usn);
+
+    printf("Enter Name: ");
+    scanf(" %[^\n]", newNode->name);
+
+    printf("Enter Programme: ");
+    scanf(" %[^\n]", newNode->programme);
+
+    printf("Enter Semester: ");
+    scanf("%d", &newNode->sem);
+
+    printf("Enter Phone No: ");
+    scanf("%s", newNode->phno);
+
+    newNode->next = NULL;
+
+    return newNode;
 }
 
-int getUserChoice() {
-  int choice;
-  scanf("%d", &choice);
-  return choice;
+/* Insert at Front */
+void insertFront()
+{
+    struct student *newNode = createNode();
+
+    newNode->next = head;
+    head = newNode;
+
+    printf("Inserted at Front\n");
 }
 
-// Function to read data for a student
-StudentInfo readStudentData() {
-   StudentInfo newStudent;
+/* Insert at End */
+void insertEnd()
+{
+    struct student *newNode = createNode();
+    struct student *temp;
 
-   printf("Enter USN: ");
-   scanf("%14s", newStudent.usn);
+    if (head == NULL)
+    {
+        head = newNode;
+        return;
+    }
 
-   printf("Enter Name: ");
-   scanf(" %[^\n]", newStudent.name);
+    temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
 
-   printf("Enter Programme: ");
-   scanf(" %[^\n]", newStudent.programme);
+    temp->next = newNode;
 
-   printf("Enter Semester: ");
-   scanf("%d", &newStudent.sem);
-
-   printf("Enter Phone Number: ");
-   scanf("%14s", newStudent.phno);
-
-   return newStudent;
+    printf("Inserted at End\n");
 }
 
-// Function to create a new node
-StudentPointer getNode(StudentInfo data) {
-   // Allocate memory for the new node
-   StudentPointer newNode = (StudentPointer)malloc(sizeof(StudentNode));
-   
-    if (newNode == NULL) {
-       printf("Memory allocation failed!\n");
-       exit(1); // Exit the program if memory allocation fails
-   }
-   newNode->data = data;
-   newNode->next = NULL;
-   return newNode;
+/* Delete from Front */
+void deleteFront()
+{
+    struct student *temp;
+
+    if (head == NULL)
+    {
+        printf("List is Empty\n");
+        return;
+    }
+
+    temp = head;
+    head = head->next;
+    free(temp);
+
+    printf("Deleted from Front\n");
 }
 
-// Function to insert a node at the front  
-void insertFront(StudentPointer newNode) {  
-   newNode->next = first;  
-   first = newNode;  
-}  
+/* Delete from End */
+void deleteEnd()
+{
+    struct student *temp, *prev;
 
-// Function to insert a node at the end  
-void insertEnd(StudentPointer newNode) {  
-   
-   if (first == NULL) {  
-       first = newNode;  
-       return;  
-   }  
- 
-   StudentPointer last = first;  
-   while (last->next != NULL) {  
-       last = last->next;  
-   }  
- 
-   last->next = newNode;  
-}  
+    if (head == NULL)
+    {
+        printf("List is Empty\n");
+        return;
+    }
 
-// Function to delete a node from the front  
-void deleteFront() {  
-   if (first == NULL) {  
-       printf("List is empty, can not delete.\n");  
-       return;  
-   }  
- 
-   StudentPointer tempNode = first;  
-   first = first->next;  
-   free(tempNode);  
-}  
+    if (head->next == NULL)
+    {
+        free(head);
+        head = NULL;
+        printf("Deleted from End\n");
+        return;
+    }
 
-// Function to delete a node from the end  
-void deleteEnd() {  
-   if (first == NULL) {  
-       printf("List is empty, can not delete.\n");  
-       return;  
-   }  
-   
-   if (first->next == NULL) {  
-       free(first);  
-       first = NULL;  
-       return;  
-   }  
+    temp = head;
+    while (temp->next != NULL)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
 
-   StudentPointer second_last = first;  
-   while (second_last->next->next != NULL) {  
-       second_last = second_last->next;  
-   }  
- 
-   free(second_last->next);  
-   second_last->next = NULL;  
-}  
+    prev->next = NULL;
+    free(temp);
 
-// Function to count the number of nodes  
-int countNodes(void) {  
-   int count = 0;  
-   StudentPointer current = first;  
-   while (current != NULL) {  
-       count++;  
-       current = current->next;  
-   }  
-   return count;  
-}  
-
-// Function to display the list  
-void display() {  
-   StudentPointer ptr = first;  
-   while (ptr) {  
-       printf("USN: %s, Name: %s, Programme: %s, Semester: %d, Phone No: %s\n", ptr->data.usn, ptr->data.name, ptr->data.programme, ptr->data.sem, ptr->data.phno);  
-       ptr = ptr->next;  
-   }  
-   printf("Total nodes: %d\n", countNodes());  
-}  
-
-void processChoice(int choice) {
-   int n, i;
-   StudentInfo newStudent;
-   StudentPointer newStudentNode;
-
-  switch (choice) {
-      case 1: {
-           printf("Enter the number of students: ");
-           scanf("%d", &n);
-           for (i = 0; i < n; i++) {
-               newStudent = readStudentData();
-               newStudentNode = getNode(newStudent);
-               insertFront(newStudentNode);
-           }
-       }
-       break;
-       case 2: {
-           newStudent = readStudentData();
-           newStudentNode = getNode(newStudent);
-           insertFront(newStudentNode);
-       }
-       break;
-       case 3: {
-           newStudent = readStudentData();
-           newStudentNode = getNode(newStudent);
-           insertEnd(newStudentNode);
-       }
-       break;
-       case 4: {
-           deleteFront();
-       }
-       break;
-       case 5: {
-           deleteEnd();
-       }
-       break;
-       case 6: {
-           display();
-       }
-       break;
-       case 7:
-          printf("Exiting...\n");
-          break;
-      default:
-          printf("Invalid choice!\n");
-  }
+    printf("Deleted from End\n");
 }
 
-int main() {
-   int choice;
-   
-   do {
-       showMenu();
-       choice = getUserChoice();
-       processChoice(choice);
-   } while (choice != 7);
+/* Display List */
+void display()
+{
+    struct student *temp = head;
 
-   return 0;
+    if (head == NULL)
+    {
+        printf("List is Empty\n");
+        return;
+    }
+
+    printf("\nStudent Details:\n");
+
+    while (temp != NULL)
+    {
+        printf("\nUSN: %s", temp->usn);
+        printf("\nName: %s", temp->name);
+        printf("\nProgramme: %s", temp->programme);
+        printf("\nSemester: %d", temp->sem);
+        printf("\nPhone: %s\n", temp->phno);
+
+        temp = temp->next;
+    }
 }
 
+/* Main Function */
+int main()
+{
+    int choice;
+
+    while (1)
+    {
+        printf("\n1.Insert Front");
+        printf("\n2.Insert End");
+        printf("\n3.Delete Front");
+        printf("\n4.Delete End");
+        printf("\n5.Display");
+        printf("\n6.Exit");
+
+        printf("\nEnter Choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1: insertFront(); break;
+            case 2: insertEnd(); break;
+            case 3: deleteFront(); break;
+            case 4: deleteEnd(); break;
+            case 5: display(); break;
+            case 6: return 0;
+            default: printf("Invalid Choice\n");
+        }
+    }
+}
 

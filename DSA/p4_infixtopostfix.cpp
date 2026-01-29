@@ -1,49 +1,52 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-#include<ctype.h>
-
-int i, top = -1;
-int op1, op2, res, s[20];
-char postfix[90], symb;
-
-void push(int item)
+#include <stdio.h>
+#include <ctype.h>
+char stack[50];
+int top = -1;
+void push(char x)
 {
-    top++;
-    s[top] = item;
+    stack[++top] = x;
 }
-
-int pop()
+char pop()
 {
-    int item = s[top];
-    top--;
-    return item;
+    return stack[top--];
 }
-
-int main(){
-    printf("Enter a valid postfix expression:\n");
-    scanf("%s", postfix);
-    for (i = 0; postfix[i] != '\0'; i++){
-        symb = postfix[i];
-        if (isdigit(symb)){
-            push(symb - '0');
-        }else{
-            op2 = pop();
-            op1 = pop();
-            switch (symb){
-                case '+': push(op1 + op2); break;
-                case '-': push(op1 - op2); break;
-                case '*': push(op1 * op2); break;
-                case '/': push(op1 / op2); break;
-                case '%': push(op1 % op2); break;
-                case '^': push(pow(op1, op2)); break;
-                case '$': 
-                default: push(0);
-            }
+int priority(char x)
+{
+    if (x == '^') return 3;
+    if (x == '*' || x == '/' || x == '%') return 2;
+    if (x == '+' || x == '-') return 1;
+    return 0;
+}
+int main()
+{
+    char infix[50], postfix[50];
+    int i, j = 0;
+    printf("Enter infix expression: ");
+    scanf("%s", infix);
+    for (i = 0; infix[i] != '\0'; i++)
+    {
+        char ch = infix[i];
+        if (isalnum(ch))
+            postfix[j++] = ch;
+        else if (ch == '(')
+            push(ch);
+        else if (ch == ')')
+        {
+            while (stack[top] != '(')
+                postfix[j++] = pop();
+            pop();   
+        }
+        else
+        {
+            while (top != -1 && priority(stack[top]) >= priority(ch))
+                postfix[j++] = pop();
+            push(ch);
         }
     }
-    res = pop();
-    printf("\nResult = %d", res);
+    while (top != -1)
+        postfix[j++] = pop();
+    postfix[j] = '\0';
+    printf("Postfix expression: %s", postfix);
     return 0;
 }
 
