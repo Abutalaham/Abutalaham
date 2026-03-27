@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order delicious food online from our restaurant. Browse through various categories including pizza, burgers, momos, and more. Fast delivery available.">
+    <meta name="keywords" content="food delivery, online restaurant, pizza, burgers, momos, fast food, online order">
+    <meta name="theme-color" content="#ff6b3d">
+    <title>Order Food Online - Premium Meals Delivered</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXXXXX-X');
+    </script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" title="FoodHub Logo">
+                    <img src="images/logo.png" alt="FoodHub - Order Food Online" class="img-responsive">
+                </a>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="foods.html">All Foods</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Search Section -->
+    <section class="food-search">
+        <div class="container">
+            <h1 class="text-center text-white mb-3">Discover Delicious Food</h1>
+            <p class="text-center text-white mb-2">Find your favorite meals from top-rated restaurants</p>
+            
+            <form action="food-search.html" method="POST" class="slide-in-up">
+                <input type="search" name="search" placeholder="Search for food, restaurants, cuisines..." class="input-responsive" required>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="text-center mb-3">Explore Categories</h2>
+            <p class="text-center text-secondary mb-4">Browse through our wide variety of delicious categories</p>
+            
+            <div class="categories-grid">
+                <a href="category-foods.html" class="card-link">
+                    <div class="box-3 float-container">
+                        <img src="images/pizza.jpg" alt="Pizza - Fresh and delicious pizzas with premium ingredients" class="img-responsive">
+                        <h3 class="float-text text-white">🍕 Pizza</h3>
+                    </div>
+                </a>
+
+                <a href="category-foods.html" class="card-link">
+                    <div class="box-3 float-container">
+                        <img src="images/burger.jpg" alt="Burgers - Juicy and flavorful burgers" class="img-responsive">
+                        <h3 class="float-text text-white">🍔 Burgers</h3>
+                    </div>
+                </a>
+
+                <a href="category-foods.html" class="card-link">
+                    <div class="box-3 float-container">
+                        <img src="images/momo.jpg" alt="Momos - Traditional steamed dumplings" class="img-responsive">
+                        <h3 class="float-text text-white">🥟 Momos</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Foods Section -->
+    <section class="food-menu">
+        <div class="container">
+            <h2 class="text-center mb-3">Featured Meals</h2>
+            <p class="text-center text-secondary mb-4">Most popular and highly rated dishes</p>
+            
+            <div class="food-menu-container">
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/menu-pizza.jpg" alt="Delicious Pizza with fresh ingredients" class="img-responsive">
+                    </div>
+                    <div class="food-menu-desc">
+                        <h4>Premium Hawaiian Pizza</h4>
+                        <div class="food-menu-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="text-muted">(234 reviews)</span>
+                        </div>
+                        <p>Authentic Italian recipe with fresh pineapple, ham, mozzarella, and special sauce</p>
+                        <div class="food-menu-footer">
+                            <span class="food-menu-price">$12.99</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/menu-burger.jpg" alt="Premium Burger" class="img-responsive">
+                    </div>
+                    <div class="food-menu-desc">
+                        <h4>Smoky Grill Burger</h4>
+                        <div class="food-menu-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="text-muted">(189 reviews)</span>
+                        </div>
+                        <p>Grilled beef patty with cheddar, crispy bacon, fresh lettuce, and special sauce</p>
+                        <div class="food-menu-footer">
+                            <span class="food-menu-price">$9.99</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/menu-burger.jpg" alt="Luxury Burger" class="img-responsive">
+                    </div>
+                    <div class="food-menu-desc">
+                        <h4>Classic Deluxe Burger</h4>
+                        <div class="food-menu-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="text-muted">(456 reviews)</span>
+                        </div>
+                        <p>Juicy beef patty with double cheese, tomato, pickles, and house special sauce</p>
+                        <div class="food-menu-footer">
+                            <span class="food-menu-price">$10.99</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/menu-pizza.jpg" alt="Pepperoni Pizza" class="img-responsive">
+                    </div>
+                    <div class="food-menu-desc">
+                        <h4>Spicy Pepperoni Pizza</h4>
+                        <div class="food-menu-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="text-muted">(378 reviews)</span>
+                        </div>
+                        <p>Wood-fired pizza with premium pepperoni, fresh mozzarella, and Italian herbs</p>
+                        <div class="food-menu-footer">
+                            <span class="food-menu-price">$13.99</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/menu-pizza.jpg" alt="Veggie Pizza" class="img-responsive">
+                    </div>
+                    <div class="food-menu-desc">
+                        <h4>Garden Fresh Veggie Pizza</h4>
+                        <div class="food-menu-rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span class="text-muted">(145 reviews)</span>
+                        </div>
+                        <p>Loaded with fresh vegetables, spinach, mushrooms, and mozzarella cheese</p>
+                        <div class="food-menu-footer">
+                            <span class="food-menu-price">$11.99</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/menu-momo.jpg" alt="Chicken Momos" class="img-responsive">
+                    </div>
+                    <div class="food-menu-desc">
+                        <h4>Chicken Steam Momos</h4>
+                        <div class="food-menu-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="text-muted">(512 reviews)</span>
+                        </div>
+                        <p>Traditional steamed dumplings with tender chicken and aromatic spices</p>
+                        <div class="food-menu-footer">
+                            <span class="food-menu-price">$7.99</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-4">
+                <a href="foods.html" class="btn btn-ghost">View All Foods →</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social" id="contact">
+        <div class="container text-center">
+            <h3 class="mb-3">Follow Us</h3>
+            <ul>
+                <li>
+                    <a href="https://facebook.com" title="Follow us on Facebook" aria-label="Facebook">
+                        <img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" alt="Facebook">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com" title="Follow us on Instagram" aria-label="Instagram">
+                        <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" alt="Instagram">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com" title="Follow us on Twitter" aria-label="Twitter">
+                        <img src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="Twitter">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2024 FoodHub. All rights reserved. | Designed & Developed with ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Main Application Script -->
+    <script src="js/app.js" defer></script>
+</body>
+</html>
