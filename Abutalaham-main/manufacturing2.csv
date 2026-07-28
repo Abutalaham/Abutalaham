@@ -1,0 +1,7 @@
+mpg,cylinder,displacement,horsepower,weight,acceleration,model year,carname
+18,8,307,130,3504,12,71,chevrolet
+15,8,350,165,3693,11.5,70,skylark
+18,8,318,150,3439,11,72,plymouth
+17,8,302,140,3446,10.5,70,ford
+14,8,455,225,4425,10,71,pontiac
+15,8,390,190,3850,8.5,70,ambassador
